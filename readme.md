@@ -247,6 +247,20 @@ We are investigating two design changes to increase the speed of this operation:
 
 - **Develop our own Event Log XML parser in C++**. Parsing XML in C++ and calling the function from HELi would offer substantial speed improvements, most likely beyond that offered by PyPy.
 
+## Getting started in Docker
+
+mkdir ~/git && cd ~/git
+git clone git@github.com:S-RM/HELi.git
+cd ~/git/HELi
+docker build -t heli .
+docker run -v ~/git/HELi/app/src/test/evtx_samples:/opt/incident -it heli '-d/opt/incident/'
+
+## Test files
+
+Acknowledgement for the test evtx files goes to @sbousseaden
+
+Check out sbousseaden's awesome repo: https://github.com/sbousseaden/EVTX-ATTACK-SAMPLES
+
 ## Known Issues
 
 - [ ] **Processes occasionally idle**
