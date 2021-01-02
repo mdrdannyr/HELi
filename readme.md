@@ -255,6 +255,21 @@ cd ~/git/HELi
 docker build -t heli .
 docker run -v ~/git/HELi/app/src/test/evtx_samples:/opt/incident -it heli '-d/opt/incident/'
 
+If you get this error: 
+
+Elasticsearch: Max virtual memory areas vm.max_map_count [65530] is too low, increase to at least [262144]
+
+Run: 
+sysctl -w vm.max_map_count=262144
+
+To set permanently:
+vim /etc/sysctl.conf
+vm.max_map_count=262144
+sysctl --system
+
+To use docker compose file, run docker-compose up (This will launch an elasticsearch and kibana instance)
+run docker attach heli_heli_1 and then push the 'Enter' button
+
 ## Test files
 
 Acknowledgement for the test evtx files goes to @sbousseaden
